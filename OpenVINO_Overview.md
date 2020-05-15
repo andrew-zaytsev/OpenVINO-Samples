@@ -1,24 +1,29 @@
 
 # Get Started with OpenVINO™ on Linux
 
-This guide provides you with the information that will help you to get started with OpenVINO toolkit on Linux*. With this guide, you will:
+The OpenVINO™ toolkit optimizes and runs Deep Learning Neural Network models on Intel® hardware. 
+
+This guide helps you get started with the toolkit on a Linux* operating system. In this guide, you will:
 * Learn the OpenVINO™ inference workflow.
-* Run the demo scripts that illustrate the workflow by performing all steps automatically.
-* Perform the workflow steps using the detailed instructions and running a code sample and demo application.       
+* Run demo scripts that perform the steps for you. These demo scripts illustrate the workflow.
+* Run the workflow steps yourself, using detailed instructions with a code sample and demo application.       
 
 ## <a name="openvino-components"></a>OpenVINO™ Components
-OpenVINO™ toolkit optimizes and runs Deep Learning Neural Network models on Intel® hardware.
-It consists of three primary components:
-1. **Inference Engine:** The software libraries that run inference against the Intermediate Representation (optimized model) to produce inference results.
-2. **Model Optimizer:** Optimizes models for Intel® architecture, converting models into a format compatible with the Inference Engine. This format is called an Intermediate Representation (IR).
-3. **Intermediate Representation (IR):** Is the output of the Model Optimizer. A model converted to a format that has been optimized for Intel® architecture and is usable by the Inference Engine.
-4. [**Code Samples**](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show how to utilize specific OpenVINO capabilities within an application, assist developers in executing specific tasks such as loading a model, running inference, querying specific device capabilities and etc.
-5. [**Demo Applications**](https://docs.openvinotoolkit.org/latest/_demos_README.html) - Console applications that provide robust application templates to support developers in implementing specific deep learning scenarios. They may also involve more complex processing pipelines that gather analysis from several models that run inference simultaneously. For example concurrently detecting a person in a video stream and detecting attributes such as age, gender and/or emotions.
+The toolkit consists of three primary components:
+* **Inference Engine:** The software libraries that run inference against the Intermediate Representation (optimized model) to produce inference results.
+* **Model Optimizer:** Optimizes models for Intel® architecture, converting models into a format compatible with the Inference Engine. This format is called an Intermediate Representation (IR).
+* **Intermediate Representation (IR):** Is the output of the Model Optimizer. A model converted to a format that has been optimized for Intel® architecture and is usable by the Inference Engine.
+
+In addition, code samples and applications are provided to help you get up and running with the toolkit:
+* [**Code Samples**](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show you how to: 
+    * Utilize specific OpenVINO capabilities in an application
+    * Help developers perform specific tasks, such as loading a model, running inference, querying specific device capabilities, and more.
+* [**Demo Applications**](https://docs.openvinotoolkit.org/latest/_demos_README.html) - Console applications that provide robust application templates to support developers while they implement specific deep learning scenarios. These applications might involve increasingly complex processing pipelines that gather analysis from several models that run inference simultaneously, like detecting a person in a video stream along with detecting the person's physical attributes, such as age, gender, and emotional state.
 
 ## <a name="openvino-installation"></a>Installation of Intel® Distribution of OpenVINO™ toolkit
-This guide assumes that you have completed all installation and configuration steps for Intel® Distribution of OpenVINO™ toolkit. For instructions, see [Install Intel® Distribution of OpenVINO™ toolkit for Linux*](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html).
+This guide assumes you completed the installation and configuration steps for Intel® Distribution of OpenVINO™ toolkit. If you have not yet done so, see [Install Intel® Distribution of OpenVINO™ toolkit for Linux*](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html) before continuing.
 
-By default, the installation directory is `/opt/intel/openvino`, though the location is up to the user.
+By default, the installation directory is `/opt/intel/openvino`. If you used a different directory when you installed the Open though the location is up to the user.
 
 > **NOTE**: If you installed the Intel® Distribution of OpenVINO™ to the non-default install directory, replace `/opt/intel` with the directory in which you installed the software.
 
