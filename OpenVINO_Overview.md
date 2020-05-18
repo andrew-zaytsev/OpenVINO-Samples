@@ -188,33 +188,37 @@ Each demo and code sample is a separate application, but they have a common beha
 Inputs you'll need to specify:
 - **A compiled OpenVINO™ code sample or demo application** that runs inferencing against a model that has been run through the Model Optimizer, resuiting in an IR, using the other inputs you provide.
 - **One or more models** in the Intermediate Representation format. Each model is trained for a specific task. Examples include pedestrian detection, face detection, vehicle detection, license plate recognition, head pose, and others. Different models are used for different applications. Models can be chained together to provide multiple features; for example vehicle + make/model + license plate recognition.
-- **One or more media files** The media is typically a video file, but can be a still photo.
-- **One or more target device** on which you to run inference. The target device can be the CPU, GPU, FPGA, or VPU accelerator.
+- **One or more media files**. The media is typically a video file, but can be a still photo.
+- **One or more target device** on which you run inference. The target device can be the CPU, GPU, FPGA, or VPU accelerator.
 
-### Build Code Samples and Demo Applications 
+### Build the Code Samples and Demo Applications 
 
-In this guide, to perform sample inference, you will run the Image Classification code sample and Security Barrier Camera Demo application that were automatically compiled when you ran the Image Classification and Inference Pipeline demo scripts. The binary files are located in the `~/inference_engine_cpp_samples_build/intel64/Release` and `~/inference_engine_demos_build/intel64/Release` directories respectively.
+To perform sample inference, run the Image Classification code sample and Security Barrier Camera Demo application that were automatically compiled when you ran the Image Classification and Inference Pipeline demo scripts. The binary files are located in the `~/inference_engine_cpp_samples_build/intel64/Release` and `~/inference_engine_demos_build/intel64/Release` directories, respectively.
 
-If you want to run another sample code or demo application, you need to build them from the source files delivered with the installation. To learn how to build the by yourself, see the [Inference Engine Code Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html#build_samples_linux) and [Demo Applications Overview](https://docs.openvinotoolkit.org/latest/_demos_README.html#build_the_demo_applications) section.
+To run other sample code or demo applications, build them from the source files delivered with the installation. To learn how to build these, see the [Inference Engine Code Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html#build_samples_linux) and the [Demo Applications Overview](https://docs.openvinotoolkit.org/latest/_demos_README.html#build_the_demo_applications) section.
 
 ### <a name="download-models"></a> Download Models
 
-You need to have a model specific for you inference task. Examples of model types are:
-- Classification (AlexNet, GoogleNet, SqueezeNet, etc.)
-    - These detect one type of element in a frame.
-- Object Detection (SSD, YOLO)
-    - These draw bounding boxes around multiple types of objects.
+#### Requirement: A model specific for you inference task 
+
+Example model types are:
+- Classification (AlexNet, GoogleNet, SqueezeNet, others) - Detect one type of element in a frame.
+- Object Detection (SSD, YOLO) - Draw bounding boxes around multiple types of objects.
 - Custom (Often based on SSD)
 
-There are several ways to find models suitable for use with OpenVINO™ toolkit:
+#### Find a model suitable for the OpenVINO™ toolkit:
+
+Use one of these options. 
 
 - Download public and Intel's pre-trained models from the [Open Model Zoo](https://github.com/opencv/open_model_zoo) using [Model Downloader tool](https://docs.openvinotoolkit.org/latest/_tools_downloader_README.html#model_downloader_usage).
 - Download from GitHub*, Caffe* Zoo, TensorFlow* Zoo, etc.
 - Train your own model.
         
-This guide describes using Model Downloader to get the pre-trained models.
+This guide uses the Model Downloader to get pre-trained models.
 
-To list models available in the downloader, enter the following command: 
+Use one of these options:
+
+* **List models available in the downloader**: 
 ```sh
 cd /opt/intel/openvino/deployment_tools/tools/model_downloader/
 ```
@@ -222,12 +226,12 @@ cd /opt/intel/openvino/deployment_tools/tools/model_downloader/
 python3 info_dumper.py --print_all
 ```
 
-To list models with a specific name pattern, you can use the `grep` command: 
+* **Use `grep` to list models that have a specific name pattern**: 
 ```sh
 python3 info_dumper.py --print_all | grep <model_name>
 ```
 
-To run the Image Classification Sample and Security Barrier Camera Demo application you need to download the following models:
+To run the Image Classification Sample and Security Barrier Camera Demo application, download the following models:
 
 |Model Name                                     | Code Sample or Demo App                             |
 |-----------------------------------------------|-----------------------------------------------------|
