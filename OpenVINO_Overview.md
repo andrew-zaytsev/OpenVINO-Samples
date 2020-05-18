@@ -56,37 +56,42 @@ The simplified OpenVINO™ workflow is:
 
 ## Use Demo Scripts to Learn the Workflow
 
-Use the demo scripts in `/opt/intel/openvino/deployment_tools/demo` as a start point of learning the OpenVINO workflow. These scripts demonstrate inference pipelines execution for different scenarios by automatically performing the workflow steps: compile several samples included into the installation, download trained models and perform pipeline steps with printing detailed output to the console.
+Use the demo scripts in `/opt/intel/openvino/deployment_tools/demo` as a starting point to learn the OpenVINO workflow. These scripts automatically perform the workflow steps to demonstrate running inference pipelines for different scenarios. The steps you see from the demos are: 
+* Compile several samples included into the installation
+* Download trained models
+* Perform pipeline steps and see the output on the console
 
-> **IMPORTANT**: The Internet access is required to run the demo scripts. If you have access to the Internet through the proxy server only, please make sure that it is configured in your OS environment.
+> **IMPORTANT**: You must have Internet access to run the demo scripts. If your Internet access is through a proxy server, make sure the operating system environment proxy information is configured.
 
-The scripts can run inference on any of [supported target devices](https://software.intel.com/en-us/openvino-toolkit/hardware). While the default inference device is CPU, though you can specify another one using the `-d` parameter. The general command to run the scripts looks as follows:
+The demo scripts can run inference on any [supported target device](https://software.intel.com/en-us/openvino-toolkit/hardware). Although the default inference device is CPU, you can use the `-d` parameter to change the inference device. The general command to run the scripts looks as follows:
 
 ```sh
-./<script_name> -d [CPU,GPU,MYRIAD,HDDL]
+./<script_name> -d [CPU, GPU, MYRIAD, HDDL]
 ```
-> **NOTE:** To run the demo applications on Intel® Processor Graphics or Intel® Neural Compute Stick 2 devices, make sure you first completed the additional [Steps for Intel® Processor Graphics (GPU)](https://docs.openvinotoolkit.org/2020.1/_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps) or [Steps for Intel® Neural Compute Stick 2](https://docs.openvinotoolkit.org/2020.1/_docs_install_guides_installing_openvino_linux.html#additional-NCS-steps).
 
-The following paragraphs provides description for each demo script.
+Before running the demo applications on Intel® Processor Graphics or on an Intel® Neural Compute Stick 2 device, you must complete the  [Steps for Intel® Processor Graphics (GPU)](https://docs.openvinotoolkit.org/2020.1/_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps) or [Steps for Intel® Neural Compute Stick 2](https://docs.openvinotoolkit.org/2020.1/_docs_install_guides_installing_openvino_linux.html#additional-NCS-steps).
+
+The following paragraphs describe each demo script.
 
 ### Use Image Classification Demo Script
-`demo_squeezenet_download_convert_run` script illustrates the image classification pipeline and does the following: 
+`demo_squeezenet_download_convert_run` script illustrates the image classification pipeline and: 
 1. Downloads a SqueezeNet model. 
 2. Runs the Model Optimizer to convert the model to the IR.
 3. Builds the Image Classification Sample Async application.
 4. Runs the compiled sample with the `car.png` image located in the `demo` directory.
 
 <details>
-    <summary><strong>Example of Running the Image Classification Demo Script</strong></summary>
+    <summary><strong>Click the triangle to see an example of running the Image Classification demo script</strong></summary>
 
-For example, to run the script performing inference on CPU, use the following command:
+To run the script to perform inference on a CPU:
 
 ```sh
 ./demo_squeezenet_download_convert_run.sh
 ```
-When the verification script completes, you will have the label and confidence for the top-10 categories:
+When the script completes, you will see the label and confidence for the top-10 categories:
 
 ```sh
+
 Top 10 results:
 
 Image /home/user/dldt/inference-engine/samples/sample_data/car.png
