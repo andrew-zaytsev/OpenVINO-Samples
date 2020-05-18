@@ -197,7 +197,7 @@ To perform sample inference, run the Image Classification code sample and Securi
 
 To run other sample code or demo applications, build them from the source files delivered with the installation. To learn how to build these, see the [Inference Engine Code Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html#build_samples_linux) and the [Demo Applications Overview](https://docs.openvinotoolkit.org/latest/_demos_README.html#build_the_demo_applications) section.
 
-### <a name="download-models"></a> Step 1: Download Models
+### <a name="download-models"></a> Step 1: Download the Models
 
 You must have a model specific for you inference task. Example model types are:
 - Classification (AlexNet, GoogleNet, SqueezeNet, others) - Detects one type of element in a frame.
@@ -265,16 +265,17 @@ Your screen looks similar to this after the download:
 
 ### <a name="convert-models-to-intermediate-representation"></a> Step 2: Convert the Models to the Intermediate Representation
 
-Once you have the trained model, you should convert it to the Intermediate Representation format using Model Optimizer before loading to Inference Engine. 
+In this step, you have the trained model and are ready to use the Model Optimizer to convert it to the Intermediate Representation format. This is required before using the Inference Engine with the model.
 
-Models in the Intermediate Representation format always include an `.xml` and `.bin` files, and may also require other files, like `.json`, `.mapping`, etc.  Verify that you have all of the needed files. They should be in the same directory for the Inference Engine to find them.
-- `model_name.xml`
-- `model_name.bin`
+Models in the Intermediate Representation format always include an `.xml` and `.bin` file, and may also include other files, like `.json`, `.mapping`, or others. Make sure you have these files in the same directory for the Inference Engine to find them.
+- **REQUIRED:** `model_name.xml`
+- **REQUIREDL:** `model_name.bin`
 - **OPTIONAL:** `model_name.json`, `model_name.mapping`, etc.
 
 This guide uses the public SqueezeNet 1.1 Caffe\* model to run the Image Classification Sample. See the Example of Downloading a Model in the <a href="#download-models">Download Models</a> section above to learn how to download this model.
 
-> **NOTE:** The `squeezenet1.1` model is downloaded in the Caffe* format and requires converting to IR.  `vehicle-license-plate-detection-barrier-0106`, `vehicle-attributes-recognition-barrier-0039`, `license-plate-recognition-barrier-0001` models in this guide are downloaded in Intermediate Representation.
+The `squeezenet1.1` model is downloaded in the Caffe* format. You must use the Model Optimizer to convert the model to the IR. 
+The `vehicle-license-plate-detection-barrier-0106`, `vehicle-attributes-recognition-barrier-0039`, `license-plate-recognition-barrier-0001` models are downloaded in the Intermediate Representation format. You don't need to use the Model Optimizer to covert these models.
 
 1. Create an `<ir_dir>` directory that will contain the Intermediate Representation (IR) of the model. 
 
@@ -287,12 +288,12 @@ This guide uses the public SqueezeNet 1.1 Caffe\* model to run the Image Classif
    ```sh  
    python3 ./mo.py --input_model <model_dir>/<model_file> --data_type <model_precision> --output_dir <ir_dir>
    ```
-4. After the Model Optimizer script is completed, the produced IR files are in the specified `<ir_dir>` directory.
+   The produced IR files are in the `<ir_dir>` directory.
 
 <details>
-    <summary><strong>Example of Converting the SqueezeNet Caffe* Model</strong></summary>
+    <summary><strong>Click the triangle to see an example of converting the SqueezeNet Caffe* model</strong></summary>
 
-The following command converts the public SqueezeNet 1.1 Caffe\* model that you have downloaded in the previous section to the FP16 IR and save to the `~/models/public/squeezenet1.1/ir` output directory:
+The following command converts the public SqueezeNet 1.1 Caffe\* model to the FP16 IR and saves to the `~/models/public/squeezenet1.1/ir` output directory:
 
 ```sh
    cd /opt/intel/openvino/deployment_tools/model_optimizer
@@ -303,27 +304,27 @@ The following command converts the public SqueezeNet 1.1 Caffe\* model that you 
 
 After the Model Optimizer script is completed, the produced IR files (`squeezenet1.1.xml`, `squeezenet1.1.bin`) are in the specified `~/models/public/squeezenet1.1/ir` directory.
 
-Copy the `squeezenet1.1.labels` file from the `/opt/intel/openvino/inference-engine/samples/sample_data/` folder to the model IR directory `<ir_dir>`. This file contains the classes that ImageNet uses so that the inference results show text instead of classification numbers:
+Copy the `squeezenet1.1.labels` file from the `/opt/intel/openvino/inference-engine/samples/sample_data/` to `<ir_dir>`. This file contains the classes that ImageNet uses. Therefore, the inference results show text instead of classification numbers:
    ```sh   
    cp /opt/intel/openvino/inference-engine/samples/sample_data/squeezenet1.1.labels <ir_dir>
    ```
 </details>
 
-### <a name="download-media"></a> Download Media
+### <a name="download-media"></a> Step 3: Download Video or a Still Photo as Media
 
-There are multiple sources for downloading video media for use with code samples and demo applications. Possibilities include: 
+Many sources are available from which you can download video media to use the code samples and demo applications. Possibilities include: 
 - https://videos.pexels.com
 - https://images.google.com
 
-Intel® Distribution of OpenVINO™ toolkit installation includes two sample images that you can use for running code samples and demo applications:
+As an alternative, the Intel® Distribution of OpenVINO™ toolkit includes two sample images that you can use for running code samples and demo applications:
 * `/opt/intel/openvino/deployment_tools/demo/car.png`
 * `/opt/intel/openvino/deployment_tools/demo/car_1.bmp`
 
-### Run Image Classification Code Sample
+### Step 4: Run the Image Classification Code Sample
 
-To run the **Image Classification** code sample with an input image on the prepared IR: 
+To run the **Image Classification** code sample with an input image on the IR: 
 
-1. Setup the OpenVINO environment variables:
+1. Set up the OpenVINO environment variables:
    ```sh
    source /opt/intel/openvino/bin/setupvars.sh
    ``` 
