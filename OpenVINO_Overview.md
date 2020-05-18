@@ -61,7 +61,7 @@ Use the demo scripts in `/opt/intel/openvino/deployment_tools/demo` as a startin
 * Download trained models
 * Perform pipeline steps and see the output on the console
 
-> **IMPORTANT**: You must have Internet access to run the demo scripts. If your Internet access is through a proxy server, make sure the operating system environment proxy information is configured.
+> **NOTE**: You must have Internet access to run the demo scripts. If your Internet access is through a proxy server, make sure the operating system environment proxy information is configured.
 
 The demo scripts can run inference on any [supported target device](https://software.intel.com/en-us/openvino-toolkit/hardware). Although the default inference device is CPU, you can use the `-d` parameter to change the inference device. The general command to run the scripts looks as follows:
 
@@ -149,7 +149,9 @@ When the verification script completes, you see an image that displays the resul
 </details>
 
 ### How to Use the Benchmark Demo Script
-`demo_benchmark_app` script illustrates how to use the Benchmark Application to estimate deep learning inference performance on supported devices. The script does the following: 
+The `demo_benchmark_app` script illustrates how to use the Benchmark Application to estimate deep learning inference performance on supported devices. 
+
+The script: 
 1. Downloads a SqueezeNet model.
 2. Runs the Model Optimizer to convert the model to the IR.
 3. Builds the Inference Engine Benchmark tool.
@@ -166,26 +168,28 @@ To run the script that performs inference on Intel® Vision Accelerator Design w
 When the verification script completes, you see the performance counters, resulting latency, and throughput values displayed on the screen.
 </details>
 
-## <a name="using-sample-application"></a>Go through the Workflow Using Code Samples and Demo Applications
+## <a name="using-sample-application"></a>Use the Workflow Using Code Samples and Demo Applications
 
-This section guides you through a simplified workflow for the Intel® Distribution of OpenVINO™ toolkit using Code Samples and Demo Applications. You will perform the following steps: 
+This section guides you through a simplified workflow for the Intel® Distribution of OpenVINO™ toolkit using Code Samples and Demo Applications. 
+
+You will perform the following steps: 
 
 1. <a href="#download-models">Use the Model Downloader to download suitable models</a>.
 2. <a href="#convert-models">Convert the models with the Model Optimizer.</a> 
 3. <a href="download-media">Download media files to run inference on.</a>
 4. <a href="run-">Run inferance on the Image Classification Sample and Security Barrier Camera Demo application and see the results</a>. 
 
-[Code Samples](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show how to utilize specific OpenVINO capabilities within an application, assist developers in executing specific tasks such as loading a model, running inference, querying specific device capabilities and etc.
+Each demo and code sample is a separate application, but they have a common behavior and common components. The code samples and demo applications are:
 
-[Demo Applications](https://docs.openvinotoolkit.org/latest/_demos_README.html) - Console applications that provide robust application templates to support developers in implementing specific deep learning scenarios. They may also involve more complex processing pipelines that gather analysis from several models that run inference simultaneously. For example concurrently detecting a person in a video stream and detecting attributes such as age, gender and/or emotions.
+* [Code Samples](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show how to utilize specific OpenVINO capabilities within an application and execute specific tasks such as loading a model, running inference, querying specific device capabilities, and more.
+
+* [Demo Applications](https://docs.openvinotoolkit.org/latest/_demos_README.html) - Console applications that provide robust application templates to support developers in implementing specific deep learning scenarios. They may also involve more complex processing pipelines that gather analysis from several models that run inference simultaneously. For example concurrently detecting a person in a video stream and detecting attributes such as age, gender and/or emotions.
  
-Each of the included demos and code samples is a separate application, but there is a common behavior and common components needed to use each of them.
-
 Inputs you'll need to specify:
-- **A compiled OpenVINO™ code sample or demo application** from that runs inferencing against a model that has been optimized by the Model Optimizer into an Intermediate Representation (IR), using the other inputs you provide.
-- **A model(s)** in the Intermediate Representation format must be provided for the application. Each model is trained for a specific task. Examples include pedestrian detection, face detection, vehicle detection, license plate recognition, head pose, and others. Different models are used for different applications. Models can be chained together to provide multiple features; for example vehicle + make/model + license plate recognition.
-- **A media file(s)** to run through the application. For these samples, the media is typically a video file, but can be a still photo.
-- **The target device(s)** to run inference on, which can be the CPU, GPU, FPGA, or VPU accelerator.
+- **A compiled OpenVINO™ code sample or demo application** that runs inferencing against a model that has been run through the Model Optimizer, resuiting in an IR, using the other inputs you provide.
+- **One or more models** in the Intermediate Representation format. Each model is trained for a specific task. Examples include pedestrian detection, face detection, vehicle detection, license plate recognition, head pose, and others. Different models are used for different applications. Models can be chained together to provide multiple features; for example vehicle + make/model + license plate recognition.
+- **One or more media files** The media is typically a video file, but can be a still photo.
+- **One or more target device** on which you to run inference. The target device can be the CPU, GPU, FPGA, or VPU accelerator.
 
 ### Build Code Samples and Demo Applications 
 
