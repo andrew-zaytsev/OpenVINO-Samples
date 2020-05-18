@@ -73,8 +73,8 @@ Before running the demo applications on Intel® Processor Graphics or on an Inte
 
 The following paragraphs describe each demo script.
 
-### Use Image Classification Demo Script
-`demo_squeezenet_download_convert_run` script illustrates the image classification pipeline and: 
+### How to Use the Image Classification Demo Script
+The `demo_squeezenet_download_convert_run` script illustrates the image classification pipeline by: 
 1. Downloads a SqueezeNet model. 
 2. Runs the Model Optimizer to convert the model to the IR.
 3. Builds the Image Classification Sample Async application.
@@ -88,7 +88,8 @@ To run the script to perform inference on a CPU:
 ```sh
 ./demo_squeezenet_download_convert_run.sh
 ```
-When the script completes, you will see the label and confidence for the top-10 categories:
+
+When the script completes, you see the label and confidence for the top-10 categories:
 
 ```sh
 
@@ -119,26 +120,35 @@ Throughput: 375.3339402 FPS
 ```
 </details>
 
-### Use Inference Pipeline Demo Script
-`demo_security_barrier_camera` script automatically downloads three pre-trained model IRs, builds the Security Barrier Camera Demo application, and runs it with the downloaded models and the `car_1.bmp` image from the `demo` directory to show an inference pipeline. The script uses vehicle recognition in which vehicle attributes build on each other to narrow in on a specific attribute.
+### How to Use the Inference Pipeline Demo Script
+The `demo_security_barrier_camera` uses vehicle recognition in which vehicle attributes build on each other to narrow in on a specific attribute
 
-First, an object is identified as a vehicle. This identification is used as input to the next model, which identifies specific vehicle attributes, including the license plate. Finally, the attributes identified as the license plate are used as input to the third model, which recognizes specific characters in the license plate.
+The script:
+1. Downloads three pre-trained model IRs.
+2. Builds the Security Barrier Camera Demo application.
+3. Runs the applicaiton with the downloaded models and the `car_1.bmp` image from the `demo` directory to show an inference pipeline. 
+
+This application:
+
+1. Identifies an object identified as a vehicle. 
+2. Uses the vehicle identification as input to the second model, which identifies specific vehicle attributes, including the license plate.
+3. Uses the the licence plate as input to the third model, which recognizes specific characters in the license plate.
 
 <details>
-    <summary><strong>Example of Running the Pipeline Demo Script</strong></summary>
+    <summary><strong>Click the triangle to see an example of Running the Pipeline demo script</strong></summary>
     
-For example, to run the script performing inference on Intel® Processor Graphics, use the following command:
+To run the script performing inference on Intel® Processor Graphics:
 
 ```sh
 ./demo_security_barrier_camera.sh -d GPU
 ```
 
-When the verification script completes, you will see an image that displays the resulting frame with detections rendered as bounding boxes, and text:
+When the verification script completes, you see an image that displays the resulting frame with detections rendered as bounding boxes, and text:
 
 ![](https://docs.openvinotoolkit.org/latest/inference_pipeline_script_lnx.png)
 </details>
 
-### Use Benchmark Demo Script
+### How to Use the Benchmark Demo Script
 `demo_benchmark_app` script illustrates how to use the Benchmark Application to estimate deep learning inference performance on supported devices. The script does the following: 
 1. Downloads a SqueezeNet model.
 2. Runs the Model Optimizer to convert the model to the IR.
@@ -146,24 +156,24 @@ When the verification script completes, you will see an image that displays the 
 4. Runs the tool with the `car.png` image located in the `demo` directory.
 
 <details>
-    <summary><strong>Example of Running the Benchmark Demo Script</strong></summary>
+    <summary><strong>Click the triangle to see an example of running the Benchmark demo script</strong></summary>
 
-For example, to run the script performing inference on Intel® Vision Accelerator Design with Intel® Movidius™ VPUs, use the following command:
+To run the script that performs inference on Intel® Vision Accelerator Design with Intel® Movidius™ VPUs:
 
 ```sh
 ./demo_squeezenet_download_convert_run.sh -d HDDL
 ```
-When the verification script completes, you will have performance counters, resulting latency, and throughput values printed.
+When the verification script completes, you see the performance counters, resulting latency, and throughput values displayed on the screen.
 </details>
 
 ## <a name="using-sample-application"></a>Go through the Workflow Using Code Samples and Demo Applications
 
-This section will guide you through a simplified workflow for the Intel® Distribution of OpenVINO™ toolkit using Code Samples and Demo Applications. You will perform the following steps: 
+This section guides you through a simplified workflow for the Intel® Distribution of OpenVINO™ toolkit using Code Samples and Demo Applications. You will perform the following steps: 
 
-* <a href="#download-models">Download suitable models using Model Downloader</a>.
-* <a href="#convert-models">Convert the models using the Model Optimizer.</a> 
-* <a href="download-media">Download media files to run inference on.</a>
-* <a href="run-">Run the Image Classification Sample and Security Barrier Camera Demo application to run inference and see the results</a>. 
+1. <a href="#download-models">Use the Model Downloader to download suitable models</a>.
+2. <a href="#convert-models">Convert the models with the Model Optimizer.</a> 
+3. <a href="download-media">Download media files to run inference on.</a>
+4. <a href="run-">Run inferance on the Image Classification Sample and Security Barrier Camera Demo application and see the results</a>. 
 
 [Code Samples](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show how to utilize specific OpenVINO capabilities within an application, assist developers in executing specific tasks such as loading a model, running inference, querying specific device capabilities and etc.
 
