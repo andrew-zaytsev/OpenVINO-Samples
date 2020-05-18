@@ -18,7 +18,7 @@ In addition, code samples and applications are provided to help you get up and r
 * [**Code Samples**](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show you how to: 
     * Utilize specific OpenVINO capabilities in an application
     * Help developers perform specific tasks, such as loading a model, running inference, querying specific device capabilities, and more.
-* [**Demo Applications**](https://docs.openvinotoolkit.org/latest/_demos_README.html) - Console applications that provide robust application templates to support developers while they implement specific deep learning scenarios. These applications might involve increasingly complex processing pipelines that gather analysis from several models that run inference simultaneously, like detecting a person in a video stream along with detecting the person's physical attributes, such as age, gender, and emotional state.
+* [**Demo Applications**](https://docs.openvinotoolkit.org/latest/_demos_README.html) - Console applications that provide robust application templates to help you implement specific deep learning scenarios. These applications involve increasingly complex processing pipelines that gather analysis data from several models that run inference simultaneously, such as detecting a person in a video stream along with detecting the person's physical attributes, such as age, gender, and emotional state.
 
 ## <a name="openvino-installation"></a>Intel® Distribution of OpenVINO™ toolkit Installation and Directory Structure
 This guide assumes you completed all Intel® Distribution of OpenVINO™ toolkit installation and configuration steps. If you have not yet installed the toolkit, see [Install Intel® Distribution of OpenVINO™ toolkit for Linux*](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html).
@@ -26,22 +26,23 @@ This guide assumes you completed all Intel® Distribution of OpenVINO™ toolkit
 By default, the installation directory is `/opt/intel/openvino`, but the installation gave you the option to use the directory of your choice. If you installed the Intel® Distribution of OpenVINO™ toolkit to a directory other than the default, replace `/opt/intel` with the directory in which you installed the software.
 
 <details>
-    <summary>Click the triangle to see the directory structure of the Intel® Distribution of OpenVINO™ toolkit</summary>
+    <summary>Click the triangle to see the Intel® Distribution of OpenVINO™ toolkit directory structure.</summary>
+   
 
 | Directory&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description                                                                           |  
 |:----------------------------------------|:--------------------------------------------------------------------------------------|
-| `demo/`                                 | Demo scripts. Demonstrate pipelines for different inference scenarios, automatically perform the steps and print detailed output to the console. For more information, see the [Use OpenVINO: Demo Scripts](#use-openvino-demo-scripts) section.|
-| `inference_engine/`                     | Inference Engine directory. Contains Inference Engine API binaries and source files, samples and extensions source files, and additional resources such as hardware drivers.|
+| `demo/`                                 | Demo scripts. Demonstrate pipelines for inference scenarios, automatically perform steps and print detailed output to the console. For more information, see the [Use OpenVINO: Demo Scripts](#use-openvino-demo-scripts) section.|
+| `inference_engine/`                     | Inference Engine directory. Contains Inference Engine API binaries and source files, samples and extensions source files, and resources like hardware drivers.|
 | `~intel_models/` | Symbolic link to the `intel_models` subfolder of the `open_model-zoo` folder |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`include/`      | Inference Engine header files. For API documentation, see the [Inference Engine API Reference](./annotated.html). |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`lib/`          | Inference Engine binaries.|
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`samples/`      | Inference Engine samples. Contains source code for C++ and Python* samples and build scripts. See the [Inference Engine Samples Overview](./docs/IE_DG/Samples_Overview.md). |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`src/`          | Source files for CPU extensions.|
 | `model_optimizer/`                      | Model Optimizer directory. Contains configuration scripts, scripts to run the Model Optimizer and other files. See the [Model Optimizer Developer Guide](./docs/MO_DG/Deep_Learning_Model_Optimizer_DevGuide.md).
-| `open_model_zoo/`                       | Open Model Zoo directory. Includes the Model Downloader tool to download [pre-trained OpenVINO's models](./docs/Pre_Trained_Models.md) and public ones, OpenVINO's models documentation, demo applications and the Accuracy Checker tool to evaluate model accuracy.|
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`demos/`        | Demo applications for various inference scenarios. Documentation and build scripts are also provided.| 
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`intel_models/` | OpenVINO pre-trained models and models documentation. See the [Overview of OpenVINO™ Toolkit Pre-Trained Models](./docs/Pre_Trained_Models.md).|
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`tools/`        | Contains the Model Downloader and Accuracy Checker tools. |
+| `open_model_zoo/`                       | Open Model Zoo directory. Includes the Model Downloader tool to download [pre-trained OpenVINO](./docs/Pre_Trained_Models.md) and public models, OpenVINO models documentation, demo applications and the Accuracy Checker tool to evaluate model accuracy.|
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`demos/`        | Demo applications for inference scenarios. Also includes documentation and build scripts.| 
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`intel_models/` | Pre-trained OpenVINO models and associated documentation. See the [Overview of OpenVINO™ Toolkit Pre-Trained Models](./docs/Pre_Trained_Models.md).|
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`tools/`        | Model Downloader and Accuracy Checker tools. |
 | `tools/`                                | Contains a symbolic link to the Model Downloader folder and auxiliary tools to work with your models: Calibration tool, Benchmark and Collect Statistics tools.|
 
 </details>
@@ -50,12 +51,12 @@ By default, the installation directory is `/opt/intel/openvino`, but the install
 
 The simplified OpenVINO™ workflow is:
 1. **Get a trained model** for your inference task. Example inference tasks: pedestrian detection, face detection, vehicle detection, license plate recognition, head pose.
-2. **Run the trained model through the Model Optimizer** to convert it to an Intermediate Representation - pair of `.xml` and `.bin` files used as the input for Inference Engine.
-3. **Use the Inference Engine API in the application** (an OpenVINO™ sample, demo or one you have built) to run inference against the Intermediate Representation (Optimized Model) and output inference results.
+2. **Run the trained model through the Model Optimizer** to convert the model to an Intermediate Representation, which consists of a pair of `.xml` and `.bin` files that are used Inference Engine input.
+3. **Use the Inference Engine API in the application** to run inference against the Intermediate Representation (pptimized model) and output inference results. The application can be an OpenVINO™ sample, demo, or your own application. 
 
-## Learn the Workflow Using Demo Scripts
+## Use Demo Scripts to Learn the Workflow
 
-Use the demo scripts from the `/opt/intel/openvino/deployment_tools/demo` directory as a start point of learning the OpenVINO workflow. The scripts demonstrate execution of inference pipelines for different scenarios by automatically performing the workflow steps: compile several samples included into the installation, download trained models and perform pipeline steps with printing detailed output to the console.
+Use the demo scripts in `/opt/intel/openvino/deployment_tools/demo` as a start point of learning the OpenVINO workflow. These scripts demonstrate inference pipelines execution for different scenarios by automatically performing the workflow steps: compile several samples included into the installation, download trained models and perform pipeline steps with printing detailed output to the console.
 
 > **IMPORTANT**: The Internet access is required to run the demo scripts. If you have access to the Internet through the proxy server only, please make sure that it is configured in your OS environment.
 
