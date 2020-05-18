@@ -168,18 +168,18 @@ To run the script that performs inference on Intel® Vision Accelerator Design w
 When the verification script completes, you see the performance counters, resulting latency, and throughput values displayed on the screen.
 </details>
 
-## <a name="using-sample-application"></a>Use the Workflow Using Code Samples and Demo Applications
+## <a name="using-sample-application"></a>Use the Workflow with Code Samples and Demo Applications
 
 This section guides you through a simplified workflow for the Intel® Distribution of OpenVINO™ toolkit using Code Samples and Demo Applications. 
 
 You will perform the following steps: 
 
-1. <a href="#download-models">Use the Model Downloader to download suitable models</a>.
-2. <a href="#convert-models">Convert the models with the Model Optimizer.</a> 
+1. <a href="#download-models">Use the Model Downloader to download suitable models.</a>
+2. <a href="#convert-models-to-intermediate-representation">Convert the models with the Model Optimizer.</a> 
 3. <a href="download-media">Download media files to run inference on.</a>
 4. <a href="run-">Run inferance on the Image Classification Sample and Security Barrier Camera Demo application and see the results</a>. 
 
-Each demo and code sample is a separate application, but they have a common behavior and common components. The code samples and demo applications are:
+Each demo and code sample is a separate application, but they use the same behavior and commponents. The code samples and demo applications are:
 
 * [Code Samples](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show how to utilize specific OpenVINO capabilities within an application and execute specific tasks such as loading a model, running inference, querying specific device capabilities, and more.
 
@@ -197,26 +197,19 @@ To perform sample inference, run the Image Classification code sample and Securi
 
 To run other sample code or demo applications, build them from the source files delivered with the installation. To learn how to build these, see the [Inference Engine Code Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html#build_samples_linux) and the [Demo Applications Overview](https://docs.openvinotoolkit.org/latest/_demos_README.html#build_the_demo_applications) section.
 
-### <a name="download-models"></a> Download Models
+### <a name="download-models"></a> Step 1: Download Models
 
-#### Requirement: A model specific for you inference task 
-
-Example model types are:
-- Classification (AlexNet, GoogleNet, SqueezeNet, others) - Detect one type of element in a frame.
-- Object Detection (SSD, YOLO) - Draw bounding boxes around multiple types of objects.
+You must have a model specific for you inference task. Example model types are:
+- Classification (AlexNet, GoogleNet, SqueezeNet, others) - Detects one type of element in a frame.
+- Object Detection (SSD, YOLO) - Draws bounding boxes around multiple types of objects.
 - Custom (Often based on SSD)
 
-#### Find a model suitable for the OpenVINO™ toolkit:
-
-Use one of these options. 
-
+To find a model suitable for the OpenVINO™ toolkit, you can:
 - Download public and Intel's pre-trained models from the [Open Model Zoo](https://github.com/opencv/open_model_zoo) using [Model Downloader tool](https://docs.openvinotoolkit.org/latest/_tools_downloader_README.html#model_downloader_usage).
 - Download from GitHub*, Caffe* Zoo, TensorFlow* Zoo, etc.
 - Train your own model.
         
-This guide uses the Model Downloader to get pre-trained models.
-
-Use one of these options:
+This guide uses the Model Downloader to get pre-trained models. Use one of these options to find a model:
 
 * **List models available in the downloader**: 
 ```sh
@@ -231,7 +224,13 @@ python3 info_dumper.py --print_all
 python3 info_dumper.py --print_all | grep <model_name>
 ```
 
-To run the Image Classification Sample and Security Barrier Camera Demo application, download the following models:
+Use the Model Optimizer to download the models to a models directory. This guide uses `<models_dir>` as the models directory and `<models_name>` as the model name:
+```sh
+sudo python3 ./downloader.py --name <model_name> --output_dir <models_dir>
+```
+> **NOTE:** Always run the downloader with `sudo`.
+
+Download the following models if you want to run the Image Classification Sample and Security Barrier Camera Demo application:
 
 |Model Name                                     | Code Sample or Demo App                             |
 |-----------------------------------------------|-----------------------------------------------------|
@@ -240,22 +239,16 @@ To run the Image Classification Sample and Security Barrier Camera Demo applicat
 |`vehicle-attributes-recognition-barrier-0039`  | Security Barrier Camera Demo application            |
 |`license-plate-recognition-barrier-0001`       | Security Barrier Camera Demo application            |
 
-To download the models to a models folder (referred to as `<models_dir>` below) with the Model Downloader, run the following command:
-```sh
-sudo python3 ./downloader.py --name <model_name> --output_dir <models_dir>
-```
-> **NOTE:** Always run the downloader with `sudo`.
-
 <details>
-    <summary><strong>Example of Downloading the SqueezeNet Caffe* Model</strong></summary>
+    <summary><strong>Click the rectangle for an example of downloading the SqueezeNet Caffe* model</strong></summary>
 
-For example, to download the SqueezeNet 1.1 Caffe* model to the `~/models` folder, run:
+To download the SqueezeNet 1.1 Caffe* model to the `~/models` folder:
 
 ```sh
 sudo python3 ./downloader.py --name squeezenet1.1 --output_dir ~/models
 ```
 
-When the model files are successfully downloaded, output similar to the following is printed:
+Your screen looks similar to this after the download:
 ```
 ###############|| Downloading topologies ||###############
 
@@ -270,7 +263,7 @@ When the model files are successfully downloaded, output similar to the followin
 ```
 </details>
 
-### <a name="convert-models-to-intermediate-representation"></a> Convert Models to Intermediate Representation
+### <a name="convert-models-to-intermediate-representation"></a> Step 2: Convert the Models to the Intermediate Representation
 
 Once you have the trained model, you should convert it to the Intermediate Representation format using Model Optimizer before loading to Inference Engine. 
 
