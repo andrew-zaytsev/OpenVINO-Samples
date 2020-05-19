@@ -179,7 +179,8 @@ You will perform the following steps:
 1. <a href="#download-models">Use the Model Downloader to download suitable models.</a>
 2. <a href="#convert-models-to-intermediate-representation">Convert the models with the Model Optimizer.</a> 
 3. <a href="#download-media">Download media files to run inference on.</a>
-4. <a href="#run-">Run inferance on the Image Classification Sample and Security Barrier Camera Demo application and see the results</a>. 
+4. <a href="#run-image-classification">Run inferance on the Image Classification Code Sample and see the results</a>. 
+5. <a href="#run-security-barrier">Run inferance on the Security Barrier Camera Demo application and see the results</a>.
 
 Each demo and code sample is a separate application, but they use the same behavior and commponents. The code samples and demo applications are:
 
@@ -322,7 +323,7 @@ As an alternative, the Intel® Distribution of OpenVINO™ toolkit includes two 
 * `/opt/intel/openvino/deployment_tools/demo/car.png`
 * `/opt/intel/openvino/deployment_tools/demo/car_1.bmp`
 
-### Step 4: Run the Image Classification Code Sample
+### <a name="run-image-classification"></a>Step 4: Run the Image Classification Code Sample
 
 To run the **Image Classification** code sample with an input image on the IR: 
 
@@ -393,7 +394,7 @@ Throughput: 375.3339402 FPS
 ```
 </details>
 
-### Step 5: Run the Security Barrier Camera Demo Application
+### <a name="run-security-barrier"></a>Step 5: Run the Security Barrier Camera Demo Application
 
 To run the **Security Barrier Camera Demo Application** using an input image on the prepared IRs:
 
