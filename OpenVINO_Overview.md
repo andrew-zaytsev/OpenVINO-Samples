@@ -1,14 +1,14 @@
 
 # Get Started with OpenVINO™ on Linux
 
-The OpenVINO™ toolkit optimizes and runs Deep Learning Neural Network models on Intel® hardware. 
+The OpenVINO™ toolkit optimizes and runs Deep Learning Neural Network models on Intel® hardware. This guide helps you get started with the OpenVINO™ toolkit you installed on a Linux* operating system. 
 
-This guide helps you get started with the OpenVINO™ toolkit you installed on a Linux* operating system. In this guide, you will:
+In this guide, you will:
 * Learn the OpenVINO™ inference workflow.
 * Run demo scripts that perform the steps for you. These demo scripts illustrate the workflow.
 * Run the workflow steps yourself, using detailed instructions with a code sample and demo application.       
 
-## <a name="openvino-components"></a>OpenVINO™ Components
+## <a name="openvino-components"></a>OpenVINO™ toolkit Components
 The toolkit consists of three primary components:
 * **Inference Engine:** The software libraries that run inference against the Intermediate Representation (optimized model) to produce inference results.
 * **Model Optimizer:** Optimizes models for Intel® architecture, converting models into a format compatible with the Inference Engine. This format is called an Intermediate Representation (IR).
@@ -178,8 +178,8 @@ You will perform the following steps:
 
 1. <a href="#download-models">Use the Model Downloader to download suitable models.</a>
 2. <a href="#convert-models-to-intermediate-representation">Convert the models with the Model Optimizer.</a> 
-3. <a href="download-media">Download media files to run inference on.</a>
-4. <a href="run-">Run inferance on the Image Classification Sample and Security Barrier Camera Demo application and see the results</a>. 
+3. <a href="#download-media">Download media files to run inference on.</a>
+4. <a href="#run-">Run inferance on the Image Classification Sample and Security Barrier Camera Demo application and see the results</a>. 
 
 Each demo and code sample is a separate application, but they use the same behavior and commponents. The code samples and demo applications are:
 
