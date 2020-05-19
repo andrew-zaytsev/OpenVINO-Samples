@@ -448,8 +448,8 @@ source /opt/intel/openvino/bin/setupvars.sh
 2. Have the directory path for the following:
 - Code Sample binaries located in `~/inference_engine_cpp_samples_build/intel64/Release`
 - Demo Application binaries located in `~/inference_engine_demos_build/intel64/Release`
-- Media: Video or image. See <a href="download-media">Download Media</a>.
-- Model: Neural Network topology converted with the Model Optimizer to the IR format (.bin and .xml files). See <a href="download-models">Download Models</a> for more information.
+- Media: Video or image. See <a href="#download-media">Download Media</a>.
+- Model: Neural Network topology converted with the Model Optimizer to the IR format (.bin and .xml files). See <a href="#download-models">Download Models</a> for more information.
 
 ## <a name="syntax-examples"></a> Typical Code Sample and Demo Application Syntax Examples
 
