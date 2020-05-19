@@ -26,7 +26,7 @@ This guide assumes you completed all Intel® Distribution of OpenVINO™ toolkit
 By default, the installation directory is `/opt/intel/openvino`, but the installation gave you the option to use the directory of your choice. If you installed the Intel® Distribution of OpenVINO™ toolkit to a directory other than the default, replace `/opt/intel` with the directory in which you installed the software.
 
 <details>
-    <summary>Click to see the Intel® Distribution of OpenVINO™ toolkit directory structure.</summary>
+    <summary>Click for the Intel® Distribution of OpenVINO™ toolkit directory structure.</summary>
    
 
 | Directory&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description                                                                           |  
@@ -56,7 +56,7 @@ The simplified OpenVINO™ workflow is:
 
 ## How to Use the Demo Scripts to Learn the Workflow
 
-Use the demo scripts in `/opt/intel/openvino/deployment_tools/demo` as a starting point to learn the OpenVINO workflow. These scripts automatically perform the workflow steps to demonstrate running inference pipelines for different scenarios. The demo steps let you see how to: 
+The demo scripts in `/opt/intel/openvino/deployment_tools/demo` give you a starting point to learn the OpenVINO workflow. These scripts automatically perform the workflow steps to demonstrate running inference pipelines for different scenarios. The demo steps let you see how to: 
 * Compile several samples installed as part of the OpenVINO toolkit.
 * Download trained models.
 * Perform pipeline steps and see the output on the console.
@@ -73,15 +73,17 @@ Before running the demo applications on Intel® Processor Graphics or on an Inte
 
 The following paragraphs describe each demo script.
 
-### The Image Classification Demo Script
-The `demo_squeezenet_download_convert_run` script illustrates the image classification pipeline by: 
+### Image Classification Demo Script
+The `demo_squeezenet_download_convert_run` script illustrates the image classification pipeline.
+
+The script: 
 1. Downloads a SqueezeNet model. 
 2. Runs the Model Optimizer to convert the model to the IR.
 3. Builds the Image Classification Sample Async application.
 4. Runs the compiled sample with the `car.png` image located in the `demo` directory.
 
 <details>
-    <summary><strong>Click to see an example of running the Image Classification demo script</strong></summary>
+    <summary><strong>Click for an example of running the Image Classification demo script</strong></summary>
 
 To run the script to perform inference on a CPU:
 
@@ -120,8 +122,8 @@ Throughput: 375.3339402 FPS
 ```
 </details>
 
-### The Inference Pipeline Demo Script
-The `demo_security_barrier_camera` uses vehicle recognition in which vehicle attributes build on each other to narrow in on a specific attribute
+### Inference Pipeline Demo Script
+The `demo_security_barrier_camera` uses vehicle recognition in which vehicle attributes build on each other to narrow in on a specific attribute.
 
 The script:
 1. Downloads three pre-trained model IRs.
@@ -135,7 +137,7 @@ This application:
 3. Uses the the licence plate as input to the third model, which recognizes specific characters in the license plate.
 
 <details>
-    <summary><strong>Click to see an example of Running the Pipeline demo script</strong></summary>
+    <summary><strong>Click for an example of Running the Pipeline demo script</strong></summary>
     
 To run the script performing inference on Intel® Processor Graphics:
 
@@ -148,7 +150,7 @@ When the verification script completes, you see an image that displays the resul
 ![](https://docs.openvinotoolkit.org/latest/inference_pipeline_script_lnx.png)
 </details>
 
-### The Benchmark Demo Script
+### Benchmark Demo Script
 The `demo_benchmark_app` script illustrates how to use the Benchmark Application to estimate deep learning inference performance on supported devices. 
 
 The script: 
@@ -158,7 +160,7 @@ The script:
 4. Runs the tool with the `car.png` image located in the `demo` directory.
 
 <details>
-    <summary><strong>Click to see an example of running the Benchmark demo script</strong></summary>
+    <summary><strong>Click for an example of running the Benchmark demo script</strong></summary>
 
 To run the script that performs inference on Intel® Vision Accelerator Design with Intel® Movidius™ VPUs:
 
@@ -199,7 +201,7 @@ To run other sample code or demo applications, build them from the source files 
 
 ### <a name="download-models"></a> Step 1: Download the Models
 
-You must have a model specific for you inference task. Example model types are:
+You must have a model that is specific for you inference task. Example model types are:
 - Classification (AlexNet, GoogleNet, SqueezeNet, others) - Detects one type of element in a frame.
 - Object Detection (SSD, YOLO) - Draws bounding boxes around multiple types of objects.
 - Custom (Often based on SSD)
@@ -265,7 +267,7 @@ Your screen looks similar to this after the download:
 
 ### <a name="convert-models-to-intermediate-representation"></a> Step 2: Convert the Models to the Intermediate Representation
 
-In this step, your trained models are available and are ready to use the Model Optimizer to convert them to the Intermediate Representation format. This is required before using the Inference Engine with the model.
+In this step, your trained models are ready to run through the Model Optimizer to convert them to the Intermediate Representation format. This is required before using the Inference Engine with the model.
 
 Models in the Intermediate Representation format always include an `.xml` and `.bin` file, and may also include other files, like `.json`, `.mapping`, or others. Make sure you have these files in the same directory for the Inference Engine to find them.
 - **REQUIRED:** `model_name.xml`
@@ -310,7 +312,7 @@ Copy the `squeezenet1.1.labels` file from the `/opt/intel/openvino/inference-eng
    ```
 </details>
 
-### <a name="download-media"></a> Step 3: Download Video or a Still Photo as Media
+### <a name="download-media"></a> Step 3: Download a Video or a Still Photo as Media
 
 Many sources are available from which you can download video media to use the code samples and demo applications. Possibilities include: 
 - https://videos.pexels.com
@@ -332,28 +334,28 @@ To run the **Image Classification** code sample with an input image on the IR:
    ```sh
    cd ~/inference_engine_cpp_samples_build/intel64/Release
    ```
-3. Run the code sample executable, specifying the input media file, the IR of your model, and a target device on which you perform inference:
+3. Run the code sample executable, specifying the input media file, the IR of your model, and a target device on which you want to perform inference:
    ```sh
    classification_sample -i <path_to_media> -m <path_to_model> -d <target_device>
    ```
 <details>
-    <summary><strong>Examples of Running Image Classification Code Sample on Different Devices</strong></summary>
+    <summary><strong>Click for examples of running the Image Classification code sample on different devices</strong></summary>
 
 The following commands run the Image Classification Code Sample using the `car.png` file from the `/opt/intel/openvino/deployment_tools/demo/` directory as an input image, the IR of your model from `~/models/public/squeezenet1.1/ir` and on different hardware devices:
 
-**For CPU:**
+**CPU:**
    ```sh
    ./classification_sample -i /opt/intel/openvino/deployment_tools/demo/car.png -m ~/models/public/squeezenet1.1/ir/squeezenet1.1.xml -d CPU
    ```
 
-   **For GPU:**
+   **GPU:**
    >**NOTE**: Running inference on Intel® Processor Graphics (GPU) requires 
     [additional hardware configuration steps](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps).
    ```sh
    ./classification_sample -i /opt/intel/openvino/deployment_tools/demo/car.png -m ~/models/public/squeezenet1.1/ir/squeezenet1.1.xml -d GPU
    ```
    
-   **For MYRIAD:** 
+   **MYRIAD:** 
 
    >**NOTE**: Running inference on VPU devices (Intel® Movidius™ Neural Compute 
    Stick or Intel® Neural Compute Stick 2) with the MYRIAD plugin requires 
@@ -391,15 +393,15 @@ Throughput: 375.3339402 FPS
 ```
 </details>
 
-### Run the Security Barrier Camera Demo Application
+### Step 5: Run the Security Barrier Camera Demo Application
 
-To run the **Security Barrier Camera Demo Application** with an input image on the prepared IRs:
+To run the **Security Barrier Camera Demo Application** using an input image on the prepared IRs:
 
 1. Set up the OpenVINO environment variables:
    ```sh
    source /opt/intel/openvino/bin/setupvars.sh
    ``` 
-2. Go to the demo applications build directory:
+2. Go to the demo application build directory:
    ```sh
    cd ~/inference_engine_demos_build/intel64/Release
    ```
