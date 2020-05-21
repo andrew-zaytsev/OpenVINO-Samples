@@ -180,8 +180,8 @@ You will perform the following steps:
 1. <a href="#download-models">Use the Model Downloader to download suitable models.</a>
 2. <a href="#convert-models-to-intermediate-representation">Convert the models with the Model Optimizer.</a> 
 3. <a href="#download-media">Download media files to run inference on.</a>
-4. <a href="#run-image-classification">Run inferance on the Image Classification Code Sample and see the results</a>. 
-5. <a href="#run-security-barrier">Run inferance on the Security Barrier Camera Demo application and see the results</a>.
+4. <a href="#run-image-classification">Run inference on the Image Classification Code Sample and see the results</a>. 
+5. <a href="#run-security-barrier">Run inference on the Security Barrier Camera Demo application and see the results</a>.
 
 Each demo and code sample is a separate application, but they use the same behavior and commponents. The code samples and demo applications are:
 
