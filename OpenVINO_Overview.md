@@ -271,7 +271,7 @@ Your screen looks similar to this after the download:
 
 In this step, your trained models are ready to run through the Model Optimizer to convert them to the Intermediate Representation format. This is required before using the Inference Engine with the model.
 
-Models in the Intermediate Representation format always include an `.xml` and `.bin` file, and may also include other files, like `.json`, `.mapping`, or others. Make sure you have these files in the same directory for the Inference Engine to find them.
+Models in the Intermediate Representation format always include a pair of `.xml` and `.bin` files. Make sure you have these files for the Inference Engine to find them.
 - **REQUIRED:** `model_name.xml`
 - **REQUIREDL:** `model_name.bin`
 - **OPTIONAL:** `model_name.json`, `model_name.mapping`, etc.
