@@ -274,7 +274,6 @@ In this step, your trained models are ready to run through the Model Optimizer t
 Models in the Intermediate Representation format always include a pair of `.xml` and `.bin` files. Make sure you have these files for the Inference Engine to find them.
 - **REQUIRED:** `model_name.xml`
 - **REQUIREDL:** `model_name.bin`
-- **OPTIONAL:** `model_name.json`, `model_name.mapping`, etc.
 
 This guide uses the public SqueezeNet 1.1 Caffe\* model to run the Image Classification Sample. See the example to download a model in the <a href="#download-models">Download Models</a> section to learn how to download this model.
 
