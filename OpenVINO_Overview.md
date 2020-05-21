@@ -14,10 +14,11 @@ The toolkit consists of three primary components:
 * **Model Optimizer:** Optimizes models for Intel® architecture, converting models into a format compatible with the Inference Engine. This format is called an Intermediate Representation (IR).
 * **Intermediate Representation (IR):** The Model Optimizer output. A model converted to a format that has been optimized for Intel® architecture and is usable by the Inference Engine.
 
-In addition, code samples and applications are provided to help you get up and running with the toolkit:
+In addition, demo scripts, code samples and demo applications are provided to help you get up and running with the toolkit:
+* [**Demo Scripts**] - Shell scripts that automatically perform the workflow steps to demonstrate running inference pipelines for different scenarios.  
 * [**Code Samples**](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show you how to: 
     * Utilize specific OpenVINO capabilities in an application
-    * Help developers perform specific tasks, such as loading a model, running inference, querying specific device capabilities, and more.
+    * Perform specific tasks, such as loading a model, running inference, querying specific device capabilities, and more.
 * [**Demo Applications**](https://docs.openvinotoolkit.org/latest/_demos_README.html) - Console applications that provide robust application templates to help you implement specific deep learning scenarios. These applications involve increasingly complex processing pipelines that gather analysis data from several models that run inference simultaneously, such as detecting a person in a video stream along with detecting the person's physical attributes, such as age, gender, and emotional state.
 
 ## <a name="openvino-installation"></a>Intel® Distribution of OpenVINO™ toolkit Installation and Directory Structure
@@ -52,7 +53,7 @@ By default, the installation directory is `/opt/intel/openvino`, but the install
 The simplified OpenVINO™ workflow is:
 1. **Get a trained model** for your inference task. Example inference tasks: pedestrian detection, face detection, vehicle detection, license plate recognition, head pose.
 2. **Run the trained model through the Model Optimizer** to convert the model to an Intermediate Representation, which consists of a pair of `.xml` and `.bin` files that are used Inference Engine input.
-3. **Use the Inference Engine API in the application** to run inference against the Intermediate Representation (pptimized model) and output inference results. The application can be an OpenVINO™ sample, demo, or your own application. 
+3. **Use the Inference Engine API in the application** to run inference against the Intermediate Representation (optimized model) and output inference results. The application can be an OpenVINO™ sample, demo, or your own application. 
 
 ## How to Use the Demo Scripts to Learn the Workflow
 
