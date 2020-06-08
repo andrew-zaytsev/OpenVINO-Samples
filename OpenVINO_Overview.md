@@ -52,13 +52,13 @@ By default, the installation directory is `/opt/intel/openvino`, but the install
 
 The simplified OpenVINO™ workflow is:
 1. **Get a trained model** for your inference task. Example inference tasks: pedestrian detection, face detection, vehicle detection, license plate recognition, head pose.
-2. **Run the trained model through the Model Optimizer** to convert the model to an Intermediate Representation, which consists of a pair of `.xml` and `.bin` files that are used Inference Engine input.
+2. **Run the trained model through the Model Optimizer** to convert the model to an Intermediate Representation, which consists of a pair of `.xml` and `.bin` files that are used as the input for Inference Engine.
 3. **Use the Inference Engine API in the application** to run inference against the Intermediate Representation (optimized model) and output inference results. The application can be an OpenVINO™ sample, demo, or your own application. 
 
-## How to Use the Demo Scripts to Learn the Workflow
+## Use the Demo Scripts to Learn the Workflow
 
 The demo scripts in `/opt/intel/openvino/deployment_tools/demo` give you a starting point to learn the OpenVINO workflow. These scripts automatically perform the workflow steps to demonstrate running inference pipelines for different scenarios. The demo steps let you see how to: 
-* Compile several samples installed as part of the OpenVINO toolkit.
+* Compile several samples from the source files delivered as part of the OpenVINO toolkit.
 * Download trained models.
 * Perform pipeline steps and see the output on the console.
 
@@ -171,7 +171,7 @@ To run the script that performs inference on Intel® Vision Accelerator Design w
 When the verification script completes, you see the performance counters, resulting latency, and throughput values displayed on the screen.
 </details>
 
-## <a name="using-sample-application"></a>How to Use the Workflow with Code Samples and Demo Applications
+## <a name="using-sample-application"></a>Use Code Samples and Demo Applications to learn the Workflow
 
 This section guides you through a simplified workflow for the Intel® Distribution of OpenVINO™ toolkit using code samples and demo applications. 
 
@@ -213,7 +213,7 @@ Options to find a model suitable for the OpenVINO™ toolkit are:
 - Download from GitHub*, Caffe* Zoo, TensorFlow* Zoo, etc.
 - Train your own model.
         
-This guide uses the Model Downloader to get pre-trained models. Use one of these options to find a model:
+This guide uses the Model Downloader to get pre-trained models. You can use one of the following options to find a model:
 
 * **List the models available in the downloader**: 
 ```sh
@@ -228,7 +228,7 @@ python3 info_dumper.py --print_all
 python3 info_dumper.py --print_all | grep <model_name>
 ```
 
-Use the Model Optimizer to download the models to a models directory. This guide uses `<models_dir>` as the models directory and `<models_name>` as the model name:
+Use the Model Downloader to download the models to a models directory. This guide uses `<models_dir>` as the models directory and `<models_name>` as the model name:
 ```sh
 sudo python3 ./downloader.py --name <model_name> --output_dir <models_dir>
 ```
