@@ -1,5 +1,5 @@
 
-# Get Started with OpenVINO™ on Linux
+# Get Started with OpenVINO™ Toolkit on Linux*
 
 The OpenVINO™ toolkit optimizes and runs Deep Learning Neural Network models on Intel® hardware. This guide helps you get started with the OpenVINO™ toolkit you installed on a Linux* operating system. 
 
@@ -26,9 +26,9 @@ This guide assumes you completed all Intel® Distribution of OpenVINO™ toolkit
 
 By default, the installation directory is `/opt/intel/openvino`, but the installation gave you the option to use the directory of your choice. If you installed the Intel® Distribution of OpenVINO™ toolkit to a directory other than the default, replace `/opt/intel` with the directory in which you installed the software.
 
-The primary tools for deploying your models and applications are installed to the `deployment_tools` folder.
+The primary tools for deploying your models and applications are installed to the `/opt/intel/openvino/deployment_tools` directory.
 <details>
-    <summary>Click for the Intel® Distribution of OpenVINO™ toolkit directory structure.</summary>
+    <summary><strong>Click for the Intel® Distribution of OpenVINO™ toolkit directory structure</strong></summary>
    
 
 | Directory&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description                                                                           |  
