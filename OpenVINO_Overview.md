@@ -21,11 +21,12 @@ In addition, demo scripts, code samples and demo applications are provided to he
     * Perform specific tasks, such as loading a model, running inference, querying specific device capabilities, and more.
 * [**Demo Applications**](https://docs.openvinotoolkit.org/latest/_demos_README.html) - Console applications that provide robust application templates to help you implement specific deep learning scenarios. These applications involve increasingly complex processing pipelines that gather analysis data from several models that run inference simultaneously, such as detecting a person in a video stream along with detecting the person's physical attributes, such as age, gender, and emotional state.
 
-## <a name="openvino-installation"></a>Intel® Distribution of OpenVINO™ toolkit Installation and Directory Structure
+## <a name="openvino-installation"></a>Intel® Distribution of OpenVINO™ toolkit Installation and Deployment Tools Directory Structure
 This guide assumes you completed all Intel® Distribution of OpenVINO™ toolkit installation and configuration steps. If you have not yet installed and configured the toolkit, see [Install Intel® Distribution of OpenVINO™ toolkit for Linux*](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html).
 
 By default, the installation directory is `/opt/intel/openvino`, but the installation gave you the option to use the directory of your choice. If you installed the Intel® Distribution of OpenVINO™ toolkit to a directory other than the default, replace `/opt/intel` with the directory in which you installed the software.
 
+The primary tools for deploying your models and applications are installed to the `deployment_tools` folder.
 <details>
     <summary>Click for the Intel® Distribution of OpenVINO™ toolkit directory structure.</summary>
    
