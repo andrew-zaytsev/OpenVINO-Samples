@@ -171,7 +171,7 @@ To run the script that performs inference on Intel® Vision Accelerator Design w
 When the verification script completes, you see the performance counters, resulting latency, and throughput values displayed on the screen.
 </details>
 
-## <a name="using-sample-application"></a>Use Code Samples and Demo Applications to learn the Workflow
+## <a name="using-sample-application"></a>Use Code Samples and Demo Applications to Learn the Workflow
 
 This section guides you through a simplified workflow for the Intel® Distribution of OpenVINO™ toolkit using code samples and demo applications. 
 
@@ -183,7 +183,7 @@ You will perform the following steps:
 4. <a href="#run-image-classification">Run inference on the Image Classification Code Sample and see the results</a>. 
 5. <a href="#run-security-barrier">Run inference on the Security Barrier Camera Demo application and see the results</a>.
 
-Each demo and code sample is a separate application, but they use the same behavior and commponents. The code samples and demo applications are:
+Each demo and code sample is a separate application, but they use the same behavior and components. The code samples and demo applications are:
 
 * [Code Samples](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html) - Small console applications that show how to utilize specific OpenVINO capabilities within an application and execute specific tasks such as loading a model, running inference, querying specific device capabilities, and more.
 
@@ -199,7 +199,7 @@ Inputs you'll need to specify:
 
 To perform sample inference, run the Image Classification code sample and Security Barrier Camera demo application that were automatically compiled when you ran the Image Classification and Inference Pipeline demo scripts. The binary files are in the `~/inference_engine_cpp_samples_build/intel64/Release` and `~/inference_engine_demos_build/intel64/Release` directories, respectively.
 
-To run other sample code or demo applications, build them from the source files delivered with the installation. To learn how to build these, see the [Inference Engine Code Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html#build_samples_linux) and the [Demo Applications Overview](https://docs.openvinotoolkit.org/latest/_demos_README.html#build_the_demo_applications) sections.
+To run other sample code or demo applications, build them from the source files delivered as part of the OpenVINO toolkit. To learn how to build these, see the [Inference Engine Code Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html#build_samples_linux) and the [Demo Applications Overview](https://docs.openvinotoolkit.org/latest/_demos_README.html#build_the_demo_applications) sections.
 
 ### <a name="download-models"></a> Step 1: Download the Models
 
@@ -254,7 +254,7 @@ sudo python3 ./downloader.py --name squeezenet1.1 --output_dir ~/models
 
 Your screen looks similar to this after the download:
 ```
-###############|| Downloading topologies ||###############
+###############|| Downloading models ||###############
 
 ========= Downloading /home/username/models/public/squeezenet1.1/squeezenet1.1.prototxt
 
@@ -263,22 +263,57 @@ Your screen looks similar to this after the download:
 
 ###############|| Post processing ||###############
 
-========= Changing input dimensions in squeezenet1.1.prototxt =========
+========= Replacing text in /home/username/models/public/squeezenet1.1/squeezenet1.1.prototxt =========
 ```
 </details>
 
+<details>
+    <summary><strong>Click for an example of downloading models for the Security Barrier Camera Demo application</strong></summary>
+
+To download all three pre-trained models in FP16 precision to the `~/models` folder:   
+
+```sh
+./downloader.py --name vehicle-license-plate-detection-barrier-0106,vehicle-attributes-recognition-barrier-0039,license-plate-recognition-barrier-0001 --output_dir ~/models --precisions FP16
+```   
+Your screen looks similar to this after the download:
+```
+################|| Downloading models ||################
+
+========== Downloading /home/username/models/intel/vehicle-license-plate-detection-barrier-0106/FP16/vehicle-license-plate-detection-barrier-0106.xml
+... 100%, 204 KB, 183949 KB/s, 0 seconds passed
+
+========== Downloading /home/username/models/intel/vehicle-license-plate-detection-barrier-0106/FP16/vehicle-license-plate-detection-barrier-0106.bin
+... 100%, 1256 KB, 3948 KB/s, 0 seconds passed
+
+========== Downloading /home/username/models/intel/vehicle-attributes-recognition-barrier-0039/FP16/vehicle-attributes-recognition-barrier-0039.xml
+... 100%, 32 KB, 133398 KB/s, 0 seconds passed
+
+========== Downloading /home/username/models/intel/vehicle-attributes-recognition-barrier-0039/FP16/vehicle-attributes-recognition-barrier-0039.bin
+... 100%, 1222 KB, 3167 KB/s, 0 seconds passed
+
+========== Downloading /home/username/models/intel/license-plate-recognition-barrier-0001/FP16/license-plate-recognition-barrier-0001.xml
+... 100%, 47 KB, 85357 KB/s, 0 seconds passed
+
+========== Downloading /home/username/models/intel/license-plate-recognition-barrier-0001/FP16/license-plate-recognition-barrier-0001.bin
+... 100%, 2378 KB, 5333 KB/s, 0 seconds passed
+
+################|| Post-processing ||################
+```
+
+</details>   
+
 ### <a name="convert-models-to-intermediate-representation"></a> Step 2: Convert the Models to the Intermediate Representation
 
-In this step, your trained models are ready to run through the Model Optimizer to convert them to the Intermediate Representation format. This is required before using the Inference Engine with the model.
+In this step, your trained models are ready to run through the Model Optimizer to convert them to the Intermediate Representation (IR) format. This is required before using the Inference Engine with the model.
 
 Models in the Intermediate Representation format always include a pair of `.xml` and `.bin` files. Make sure you have these files for the Inference Engine to find them.
 - **REQUIRED:** `model_name.xml`
-- **REQUIREDL:** `model_name.bin`
+- **REQUIRED:** `model_name.bin`
 
 This guide uses the public SqueezeNet 1.1 Caffe\* model to run the Image Classification Sample. See the example to download a model in the <a href="#download-models">Download Models</a> section to learn how to download this model.
 
 The `squeezenet1.1` model is downloaded in the Caffe* format. You must use the Model Optimizer to convert the model to the IR. 
-The `vehicle-license-plate-detection-barrier-0106`, `vehicle-attributes-recognition-barrier-0039`, `license-plate-recognition-barrier-0001` models are downloaded in the Intermediate Representation format. You don't need to use the Model Optimizer to covert these models.
+The `vehicle-license-plate-detection-barrier-0106`, `vehicle-attributes-recognition-barrier-0039`, `license-plate-recognition-barrier-0001` models are downloaded in the Intermediate Representation format. You don't need to use the Model Optimizer to convert these models.
 
 1. Create an `<ir_dir>` directory to contain the model's Intermediate Representation (IR). 
 
@@ -307,9 +342,9 @@ The following command converts the public SqueezeNet 1.1 Caffe\* model to the FP
 
 After the Model Optimizer script is completed, the produced IR files (`squeezenet1.1.xml`, `squeezenet1.1.bin`) are in the specified `~/models/public/squeezenet1.1/ir` directory.
 
-Copy the `squeezenet1.1.labels` file from the `/opt/intel/openvino/inference-engine/samples/sample_data/` to `<ir_dir>`. This file contains the classes that ImageNet uses. Therefore, the inference results show text instead of classification numbers:
+Copy the `squeezenet1.1.labels` file from the `/opt/intel/openvino/deployment_tools/demo/` to `<ir_dir>`. This file contains the classes that ImageNet uses. Therefore, the inference results show text instead of classification numbers:
    ```sh   
-   cp /opt/intel/openvino/inference-engine/samples/sample_data/squeezenet1.1.labels <ir_dir>
+   cp /opt/intel/openvino/deployment_tools/demo/squeezenet1.1.labels <ir_dir>
    ```
 </details>
 
@@ -325,6 +360,8 @@ As an alternative, the Intel® Distribution of OpenVINO™ toolkit includes two 
 
 ### <a name="run-image-classification"></a>Step 4: Run the Image Classification Code Sample
 
+> **NOTE**: The Image Classification code sample is automatically compiled when you ran the Image Classification demo script. If you want to compile it manually, see the [Inference Engine Code Samples Overview](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_Samples_Overview.html#build_samples_linux) section. 
+
 To run the **Image Classification** code sample with an input image on the IR: 
 
 1. Set up the OpenVINO environment variables:
@@ -333,11 +370,11 @@ To run the **Image Classification** code sample with an input image on the IR:
    ``` 
 2. Go to the code samples build directory:
    ```sh
-   cd ~/inference_engine_cpp_samples_build/intel64/Release
+   cd ~/inference_engine_samples_build/intel64/Release
    ```
 3. Run the code sample executable, specifying the input media file, the IR of your model, and a target device on which you want to perform inference:
    ```sh
-   classification_sample -i <path_to_media> -m <path_to_model> -d <target_device>
+   classification_sample_async -i <path_to_media> -m <path_to_model> -d <target_device>
    ```
 <details>
     <summary><strong>Click for examples of running the Image Classification code sample on different devices</strong></summary>
@@ -346,14 +383,14 @@ The following commands run the Image Classification Code Sample using the `car.p
 
 **CPU:**
    ```sh
-   ./classification_sample -i /opt/intel/openvino/deployment_tools/demo/car.png -m ~/models/public/squeezenet1.1/ir/squeezenet1.1.xml -d CPU
+   ./classification_sample_async -i /opt/intel/openvino/deployment_tools/demo/car.png -m ~/models/public/squeezenet1.1/ir/squeezenet1.1.xml -d CPU
    ```
 
    **GPU:**
    >**NOTE**: Running inference on Intel® Processor Graphics (GPU) requires 
     [additional hardware configuration steps](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps).
    ```sh
-   ./classification_sample -i /opt/intel/openvino/deployment_tools/demo/car.png -m ~/models/public/squeezenet1.1/ir/squeezenet1.1.xml -d GPU
+   ./classification_sample_async -i /opt/intel/openvino/deployment_tools/demo/car.png -m ~/models/public/squeezenet1.1/ir/squeezenet1.1.xml -d GPU
    ```
    
    **MYRIAD:** 
@@ -362,7 +399,7 @@ The following commands run the Image Classification Code Sample using the `car.p
    Stick or Intel® Neural Compute Stick 2) with the MYRIAD plugin requires 
     [additional hardware configuration steps](inference-engine/README.md#optional-additional-installation-steps-for-the-intel-movidius-neural-compute-stick-and-neural-compute-stick-2).
    ```sh   
-   ./classification_sample -i /opt/intel/openvino/deployment_tools/demo/car.png -m ~/models/public/squeezenet1.1/ir/squeezenet1.1.xml -d MYRIAD
+   ./classification_sample_async -i /opt/intel/openvino/deployment_tools/demo/car.png -m ~/models/public/squeezenet1.1/ir/squeezenet1.1.xml -d MYRIAD
    ```
 
 When the Sample Application completes, you see the label and confidence for the top-10 categories on the display. Below is a sample output with inference results on CPU:    
@@ -396,6 +433,8 @@ Throughput: 375.3339402 FPS
 
 ### <a name="run-security-barrier"></a>Step 5: Run the Security Barrier Camera Demo Application
 
+> **NOTE**: The Security Barrier Camera Demo Application is automatically compiled when you ran the Inference Pipeline demo scripts. If you want to build it manually, see the [Demo Applications Overview](https://docs.openvinotoolkit.org/latest/_demos_README.html#build_the_demo_applications) section.
+
 To run the **Security Barrier Camera Demo Application** using an input image on the prepared IRs:
 
 1. Set up the OpenVINO environment variables:
@@ -408,7 +447,7 @@ To run the **Security Barrier Camera Demo Application** using an input image on 
    ```
 3. Run the demo executable, specifying the input media file, list of model IRs, and a target device on which to perform inference:
    ```sh
-   ./security_barrier_camera_demo -i <path_to_media> -m <path_to_model>/vehicle-license-plate-detection-barrier-0106.xml -m_va <path_to_vehicle_attributes model>/vehicle-attributes-recognition-barrier-0039.xml -m_lpr <path_to_license_plate_recognition_model>/license-plate-recognition-barrier-0001.xml -d <target_device>
+   ./security_barrier_camera_demo -i <path_to_media> -m <path_to_vehicle-license-plate-detection_model_xml> -m_va <path_to_vehicle_attributes_model_xml> -m_lpr <path_to_license_plate_recognition_model_xml> -d <target_device>
    ```
 
 <details>
@@ -417,8 +456,9 @@ To run the **Security Barrier Camera Demo Application** using an input image on 
 
 **CPU:**
 ```sh
-./security_barrier_camera_demo -i /opt/intel/openvino/deployment_tools/demo/car_1.bmp -m <path_to_model>/vehicle-license-plate-detection-barrier-0106.xml -m_va <path_to_model>/vehicle-attributes-recognition-barrier-0039.xml -m_lpr <path_to_model>/license-plate-recognition-barrier-0001.xml -d CPU
+./security_barrier_camera_demo -i /opt/intel/openvino/deployment_tools/demo/car_1.bmp -m /home/username/models/intel/vehicle-license-plate-detection-barrier-0106/FP16/vehicle-license-plate-detection-barrier-0106.xml -m_va /home/username/models/intel/vehicle-attributes-recognition-barrier-0039/FP16/vehicle-attributes-recognition-barrier-0039.xml -m_lpr /home/username/models/intel/license-plate-recognition-barrier-0001/FP16/license-plate-recognition-barrier-0001.xml -d CPU
 ```
+/home/username/models/intel/license-plate-recognition-barrier-0001/FP16/license-plate-recognition-barrier-0001.xml
 
 **GPU:**
 >**NOTE**: Running inference on Intel® Processor Graphics (GPU) requires 
@@ -432,7 +472,7 @@ To run the **Security Barrier Camera Demo Application** using an input image on 
    Stick or Intel® Neural Compute Stick 2) with the MYRIAD plugin requires 
     [additional hardware configuration steps](https://docs.openvinotoolkit.org/latest/_docs_install_guides_installing_openvino_linux.html#additional-NCS-steps).
    ```sh   
-   ./classification_sample -i <DLDT_DIR>/inference-engine/samples/sample_data/car.png -m <ir_dir>/squeezenet1.1.xml -d MYRIAD
+   ./classification_sample_async -i <DLDT_DIR>/inference-engine/samples/sample_data/car.png -m <ir_dir>/squeezenet1.1.xml -d MYRIAD
    ```
 
 </details>
